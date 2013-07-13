@@ -29,23 +29,22 @@ public class AYNDefineSpawn implements CommandExecutor
 	    			plugin.getConfig().set("spawn.world", sender.getLocation().getWorld().getName());
 	    			
 	    			// ...record the x-position the player is in...
-                    plugin.getConfig().set("spawn.x", sender.getLocation().getX());
+                   		plugin.getConfig().set("spawn.x", sender.getLocation().getX());
                     
-                    // ...record the y-position the player is in...
-                    plugin.getConfig().set("spawn.y", sender.getLocation().getY());
+                    		// ...record the y-position the player is in...
+                   		 plugin.getConfig().set("spawn.y", sender.getLocation().getY());
                     
-                    // ...record the z-position the player is in...
-                    plugin.getConfig().set("spawn.z", sender.getLocation().getZ());
+                   		 // ...record the z-position the player is in...
+                   		plugin.getConfig().set("spawn.z", sender.getLocation().getZ());
                     
-                    // ...save ALL of the above info to the config file...
-                    plugin.saveConfig();
+                    		// ...save ALL of the above info to the config file...
+                    		plugin.saveConfig();
                     
-                    // ...and tell the player that spawn was set successfully!
-                    sender.sendMessage(ChatColor.GREEN + "Spawn set!");
+                   	 	// ...and tell the player that spawn was set successfully!
+                    		sender.sendMessage(ChatColor.GREEN + "Spawn set!");
+                    		return true;
 	    		}
-	    		// If this has happened, the function will return true. 
-	    		return true;
-	    	}
+	    	
 	    	else
 	    		{
 	    			
@@ -54,8 +53,9 @@ public class AYNDefineSpawn implements CommandExecutor
 	    		}
 	    		
 	    	
-	        // If this hasn't happened, a value of false will be returned.
-	    	return false;
+	       
+	    	
 	    }
+	    return false;
 	}
 }
