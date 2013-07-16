@@ -1,6 +1,6 @@
 name: All You Need
 main: com.crystalcraftmc.allyouneed.Main
-version: 0.2b
+version: 0.2.4b
 
 commands:
    ct:
