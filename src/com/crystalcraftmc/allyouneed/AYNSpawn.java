@@ -59,6 +59,8 @@ public class AYNSpawn implements CommandExecutor
                     // ...teleport the player to the referred position...
                     p.teleport(new Location(w, x, y, z));
                     
+                    
+                    
                     // ...and welcome the player to spawn!
                     p.sendMessage(ChatColor.GREEN + plugin.getConfig().getString("spawn-message"));
 	    		}

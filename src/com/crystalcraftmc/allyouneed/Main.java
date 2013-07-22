@@ -53,11 +53,8 @@ public final class Main extends JavaPlugin
 		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
 		getCommand("spawn").setExecutor(new AYNSpawn(this));
 		
+		getCommand("sethome").setExecutor(new AYNSetHome(this));
 		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
-		getCommand("definehome").setExecutor(new AYNDefineHome(this));
-		
-		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
-		getCommand("gohome").setExecutor(new AYNGoHome(this));
     }
  
     @Override

@@ -38,6 +38,14 @@ commands:
       usage: /gethelp [message]
       permission: ayn.rules
       permission-message: You don't have <permission>
+   sethome:
+      description:
+      usage: /
+      permission: ayn.sethome
+   home:
+      description:
+      usage: /
+      permission: ayn.home
 
 permissions:
     ayn.*:
