@@ -19,27 +19,30 @@ public class AYNSetHome  extends JavaPlugin implements CommandExecutor{
 	{
 		this.plugin = plugin;
 	}
+
 	public HomeListConfig HomeListConfig = new HomeListConfig();
 	
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[]args){
-		
-		if(label.equalsIgnoreCase("sethome")){
-			
-			
-			if(sender instanceof ConsoleCommandSender){
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[]args)
+	{
+		if(label.equalsIgnoreCase("definehome"))
+		{
+			if(sender instanceof ConsoleCommandSender)
+			{
 				sender.sendMessage(ChatColor.RED + "This command can only be run by a player");
 				return true;
 			}
-			else{
-				Player sder = (Player) sender;
-				double X = sder.getLocation().getX();
-				double Y = sder.getLocation().getY();
-				double Z = sder.getLocation().getZ();
+			
+			else
+			{
+				Player p = (Player) sender;
+				double X = p.getLocation().getX();
+				double Y = p.getLocation().getY();
+				double Z = p.getLocation().getZ();
 				
-				String sdername = sder.getName();
-				HomeListConfig.getHomeList().set(sdername + ".X", X);
-				HomeListConfig.getHomeList().set(sdername+".Y", Y);
-				HomeListConfig.getHomeList().set(sdername+".Z", Z);
+				String pname = p.getName();
+				HomeListConfig.getHomeList().set(pname + ".X", X);
+				HomeListConfig.getHomeList().set(pname+".Y", Y);
+				HomeListConfig.getHomeList().set(pname+".Z", Z);
 				HomeListConfig.savehomelist();
 				sender.sendMessage(ChatColor.GREEN + "Home set!");
 				return true;
