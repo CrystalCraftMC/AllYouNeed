@@ -1,6 +1,5 @@
 package com.crystalcraftmc.allyouneed;
 
-
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -9,16 +8,17 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 
-public class AYNHome extends JavaPlugin implements CommandExecutor{
+
+public class AYNHome implements CommandExecutor{
 	
 	Main plugin;
 	public AYNHome(Main plugin)
 	{
 		this.plugin = plugin;
 	}
-	public HomeListConfig HomeListConfig = new HomeListConfig();
+	
+	public static HomeListConfig HomeListConfig = new HomeListConfig();
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[]args){
 		if(label.equalsIgnoreCase("home")){
