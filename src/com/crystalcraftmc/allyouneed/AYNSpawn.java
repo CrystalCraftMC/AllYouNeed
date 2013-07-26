@@ -56,10 +56,12 @@ public class AYNSpawn implements CommandExecutor
                     // ...reference the z-position that it is set at...
                     double z = plugin.getConfig().getDouble("spawn.z");
                     
+                    double yaw = plugin.getConfig().getDouble("spawn.yaw");
+                    
+                    double pitch = plugin.getConfig().getDouble("spawn.pitch");
+                    
                     // ...teleport the player to the referred position...
-                    p.teleport(new Location(w, x, y, z));
-                    
-                    
+                    p.teleport(new Location(w, x, y, z, (float)yaw, (float)pitch));
                     
                     // ...and welcome the player to spawn!
                     p.sendMessage(ChatColor.GREEN + plugin.getConfig().getString("spawn-message"));

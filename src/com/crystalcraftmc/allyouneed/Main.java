@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.crystalcraftmc.allyouneed.Commands.*;
+
 public final class Main extends JavaPlugin
 {
 	// When the plugin first starts...
@@ -48,7 +50,7 @@ public final class Main extends JavaPlugin
 		getCommand("tpgo").setExecutor(new AYNTpgo(this));
 		
 		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
-		getCommand("definespawn").setExecutor(new AYNDefineSpawn(this));
+		getCommand("definespawn").setExecutor(new DefineSpawn(this));
 		
 		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
 		getCommand("spawn").setExecutor(new AYNSpawn(this));
