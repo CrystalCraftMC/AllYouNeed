@@ -12,13 +12,19 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class HomeListConfig extends JavaPlugin{
 	private FileConfiguration CustomConfig = null;
 	private File customConfigFile = null;
+	private Main mainfile;
 	
+	public HomeListConfig(){}
 	
+	public HomeListConfig(Main m){
+		this.mainfile = m;
+	}
 	
 	public void reloadHomeList(){//reloads (or creates) the homelist
 		if(customConfigFile == null){
 			
-			File fle = new File("homelist.yml");
+	        File pluginFolder = this.mainfile.getDataFolder();
+			File fle = new File(pluginFolder,"homelist.yml");	
 			try {
 				fle.createNewFile();
 			} catch (IOException e) {
