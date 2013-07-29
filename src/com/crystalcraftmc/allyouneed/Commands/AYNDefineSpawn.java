@@ -1,4 +1,4 @@
-package com.crystalcraftmc.allyouneed;
+package com.crystalcraftmc.allyouneed.Commands;
 
 import java.util.logging.Level;
 
@@ -9,6 +9,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import com.crystalcraftmc.allyouneed.Main;
 
 public class AYNDefineSpawn implements CommandExecutor {
 	Main plugin;

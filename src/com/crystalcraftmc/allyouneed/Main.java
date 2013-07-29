@@ -4,7 +4,14 @@ import java.io.IOException;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.crystalcraftmc.allyouneed.Commands.*;
+import com.crystalcraftmc.allyouneed.Commands.AYNCt;
+import com.crystalcraftmc.allyouneed.Commands.AYNDefineSpawn;
+import com.crystalcraftmc.allyouneed.Commands.AYNEnder;
+import com.crystalcraftmc.allyouneed.Commands.AYNHeal;
+import com.crystalcraftmc.allyouneed.Commands.AYNHome;
+import com.crystalcraftmc.allyouneed.Commands.AYNSetHome;
+import com.crystalcraftmc.allyouneed.Commands.AYNSpawn;
+import com.crystalcraftmc.allyouneed.Commands.AYNTpgo;
 
 public final class Main extends JavaPlugin
 {
@@ -56,7 +63,7 @@ public final class Main extends JavaPlugin
 		getCommand("tpgo").setExecutor(new AYNTpgo(this));
 		
 		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
-		getCommand("definespawn").setExecutor(new DefineSpawn(this));
+		getCommand("definespawn").setExecutor(new AYNDefineSpawn(this));
 		
 		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
 		getCommand("spawn").setExecutor(new AYNSpawn(this));
@@ -64,6 +71,8 @@ public final class Main extends JavaPlugin
 		getCommand("definehome").setExecutor(new AYNSetHome(this));
 		
 		getCommand("home").setExecutor(new AYNHome(this));
+		
+		getCommand("heal").setExecutor(new AYNHeal(this));
 	
     }
  

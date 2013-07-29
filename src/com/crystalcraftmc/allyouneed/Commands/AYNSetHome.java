@@ -1,4 +1,4 @@
-package com.crystalcraftmc.allyouneed;
+package com.crystalcraftmc.allyouneed.Commands;
 
 
 
@@ -8,6 +8,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+
+import com.crystalcraftmc.allyouneed.HomeListConfig;
+import com.crystalcraftmc.allyouneed.Main;
 
 
 public class AYNSetHome implements CommandExecutor{

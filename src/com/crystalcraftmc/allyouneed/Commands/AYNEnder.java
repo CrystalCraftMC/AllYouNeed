@@ -1,13 +1,15 @@
-package com.crystalcraftmc.allyouneed;
+package com.crystalcraftmc.allyouneed.Commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class AYNCt implements CommandExecutor
+import com.crystalcraftmc.allyouneed.Main;
+
+public class AYNEnder implements CommandExecutor
 {
-	public AYNCt(Main main)
+	public AYNEnder(Main main)
 	{
 		// TODO Auto-generated constructor stub
 	}
@@ -16,8 +18,8 @@ public class AYNCt implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
 	{
 	    {	
-	    	// If the player typed /wb, then do the following...
-	    	if (cmd.getName().equalsIgnoreCase("ct"))
+	    	// If the player typed /ender, then do the following...
+	    	if (cmd.getName().equalsIgnoreCase("ender"))
 	    	{
 	    		// If the sender of the command is NOT a player...
 	    		if (!(sender instanceof Player))
@@ -31,8 +33,8 @@ public class AYNCt implements CommandExecutor
 	    			// ...if the sender of the command is a player...
 	    			Player player = (Player) sender;
 	    			
-	    			// ...open a crafting table.
-	    			player.openWorkbench(null, true);
+	    			// ...open their ender chest.
+	    			player.openInventory(player.getEnderChest());
 	    		}
 	    		// If this has happened, the function will return true. 
 	    		return true;
