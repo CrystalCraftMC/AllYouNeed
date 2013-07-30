@@ -1,81 +1,65 @@
 name: All You Need
 main: com.crystalcraftmc.allyouneed.Main
-version: 0.2.4b
+version: 0.2.2b
 
 commands:
-   ct:
-      description: Open a crafting table.
-      usage: /ct
-      permission: ayn.ct
-      permission-message: You don't have <permission>
-   ender:
-      description: Open your ender chest.
-      usage: /ender
-      permission: ayn.ender
-      permission-message: You don't have <permission>
-   tpgo:
-      description: Teleport to another player.
-      usage: /tpgo [player]
-      permission: ayn.tpgo
-      permission-message: You don't have <permission>
-   definespawn:
-      description: Set the world spawn.
-      usage: /definespawn
-      permission: ayn.definespawn
-      permission-message: You don't have <permission>
-   spawn:
-      description: Go to the world spawn.
-      usage: /spawn
-      permission: ayn.spawn
-      permission-message: You don't have <permission>
-   rules:
-      description: List the server rules.
-      usage: /rules
-      permission: ayn.rules
-      permission-message: You don't have <permission>
-   gethelp:
-      description: Send message to all server staff.
-      usage: /gethelp [message]
-      permission: ayn.rules
-      permission-message: You don't have <permission>
-   sethome:
-      description:
-      usage: /
-      permission: ayn.sethome
-   home:
-      description:
-      usage: /
-      permission: ayn.home
-
+  ct:
+    description: Open craft table
+    usage: /ct
+    permission: ayn.ct
+  ender:
+    description: Open ender chest
+    usage: /ender
+    permission: ayn.ender
+  tpgo:
+    description: Teleport to another player
+    usage: /tpgo <Player>
+    permission: ayn.tpgo
+  definespawn:
+    description: Set the world spawn
+    usage: /setspawn
+    permission: ayn.definespawn
+  spawn:
+    description: Go to the world spawn
+    usage: /spawn
+    permission: ayn.spawn
+  home:
+    description: Go home
+    usage: /home
+    permission: ayn.home
+  definehome:
+    description: Define your home
+    usage: /definehome
+    permission: ayn.sethome
+  heal:
+    description: Heals you or a player
+    usage: /heal [player]
+    permission: ayn.heal
+    
 permissions:
-    ayn.*:
-        description: Gives access to all All You Need commands
-        children:
-            ayn.ct: true
-            ayn.ender: true
-            ayn.tpgo: true
-            ayn.definespawn: true
-            ayn.spawn: true
-            ayn.rules: true
-            ayn.gethelp: true
-    ayn.ct:
-        description: Open a crafting table.
-        default: op
-    ayn.ender:
-        description: Open your ender chest.
-        default: op
-    ayn.tpgo:
-        description: Teleport to another player.
-        default: op
-    ayn.definespawn:
-        description: Set the world spawn.
-        default: op
-    ayn.spawn:
-        description: Go to the world spawn.
-        default: not op
-    ayn.rules:
-        description: List the server rules.
-        default: not op
-    ayn.gethelp:
-        description: Send message to all server staff.
-        default: not op
+  ayn.*:
+    children:
+      ayn.ct:true
+      ayn.ender:true
+      ayn.tpgo:true
+      ayn.definespawn:true
+      ayn.spawn:true
+      ayn.home:true
+      ayn.definehome:true
+      ayn.heal:true
+  ayn.ct:
+    default: true
+  ayn.ender:
+    default: true
+  ayn.tpgo:
+    default: op
+  ayn.definespawn:
+    default: op
+  ayn.spawn:
+    default: true
+  ayn.home:
+    default: true
+  ayn.sethome:
+    default: true
+  ayn.heal:
+    default: op

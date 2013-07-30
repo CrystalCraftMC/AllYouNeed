@@ -1,10 +1,6 @@
 package com.crystalcraftmc.allyouneed.Commands;
 
-import java.util.logging.Level;
-
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,47 +8,59 @@ import org.bukkit.entity.Player;
 
 import com.crystalcraftmc.allyouneed.Main;
 
-public class AYNDefineSpawn implements CommandExecutor {
+public class AYNDefineSpawn implements CommandExecutor
+{
 	Main plugin;
-
-	public AYNDefineSpawn(Main plugin) {
+	public AYNDefineSpawn(Main plugin)
+	{
 		this.plugin = plugin;
 	}
-
+	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
 	{
-		if (!(sender instanceof Player))
-		{
-			System.out.println("This command can only be run by a player.");
-			return false;
-		}
-		
+		// Make the letter 'p' a variable for the command sender (or the player).
 		Player p = (Player) sender;
 		
-		Location loc = p.getLocation();
-    	World world = p.getWorld();
-		
-	    if (cmd.getName().equalsIgnoreCase("definespawn"))
 	    {	
-	    	world.setSpawnLocation(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
-	    		
-	    	plugin.getConfig().set("spawn.world", world.getName());
-	    	plugin.getConfig().set("spawn.x", loc.getX());
-	    	plugin.getConfig().set("spawn.y", loc.getY());
-	    	plugin.getConfig().set("spawn.z", loc.getZ());
-	    	plugin.getConfig().set("spawn.yaw", loc.getYaw());
-	    	plugin.getConfig().set("spawn.pitch", loc.getPitch());
-	    	plugin.saveConfig();
-	    	plugin.reloadConfig();
-	    	p.sendMessage(ChatColor.GREEN + "Spawn set!");
-	    }
-	    	else
+	    	// If the player typed /definespawn, then do the following...
+	    	if (cmd.getName().equalsIgnoreCase("definespawn"))
 	    	{
-	    		p.sendMessage("There was a problem setting the spawn");
-	    		plugin.getLogger().log(Level.SEVERE,"Unable to set the spawn for the world.");
+	    		// If the sender of the command is NOT a player...
+	    		if (!(sender instanceof Player))
+	    		{
+	    			// ...do not let the command be run.
+	    			sender.sendMessage("This command can only be run by a player.");
+	    		}
+	    		// Otherwise...
+	    		else
+	    		{
+	    			// ...record the world the player is in...
+	    			p.getLocation().getWorld().setSpawnLocation((int)p.getLocation().getX(), 
+	    					(int)p.getLocation().getY(),(int) p.getLocation().getZ());
+	    			plugin.getConfig().set("spawn.world", p.getLocation().getWorld().getName());
+	    			
+	    			// ...record the x-position the player is in...
+                    plugin.getConfig().set("spawn.x", p.getLocation().getX());
+                    
+                    // ...record the y-position the player is in...
+                    plugin.getConfig().set("spawn.y", p.getLocation().getY());
+                    
+                    // ...record the z-position the player is in...
+                    plugin.getConfig().set("spawn.z", p.getLocation().getZ());
+                    
+                    // ...save ALL of the above info to the config file...
+                    plugin.saveConfig();
+                    
+                    // ...and tell the player that spawn was set successfully!
+                    p.sendMessage(ChatColor.GREEN + "Spawn set!");
+	    		}
+	    		// If this has happened, the function will return true. 
+	    		return true;
 	    	}
 	    	
-	    	return true;
+	        // If this hasn't happened, a value of false will be returned.
+	    	return false;
+	    }
 	}
 }

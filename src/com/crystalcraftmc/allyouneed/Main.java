@@ -73,6 +73,8 @@ public final class Main extends JavaPlugin
 		getCommand("home").setExecutor(new AYNHome(this));
 		
 		getCommand("heal").setExecutor(new AYNHeal(this));
+		
+
 	
     }
  

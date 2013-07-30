@@ -7,6 +7,7 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import com.crystalcraftmc.allyouneed.Main;
@@ -30,7 +31,7 @@ public class AYNSpawn implements CommandExecutor
 	    	if (cmd.getName().equalsIgnoreCase("spawn"))
 	    	{
 	    		// If the sender of the command is NOT a player...
-	    		if (!(sender instanceof Player))
+	    		if (sender instanceof ConsoleCommandSender)
 	    		{
 	    			// ...do not let the command be run.
 	    			sender.sendMessage("This command can only be run by a player.");
@@ -58,12 +59,10 @@ public class AYNSpawn implements CommandExecutor
                     // ...reference the z-position that it is set at...
                     double z = plugin.getConfig().getDouble("spawn.z");
                     
-                    double yaw = plugin.getConfig().getDouble("spawn.yaw");
-                    
-                    double pitch = plugin.getConfig().getDouble("spawn.pitch");
-                    
                     // ...teleport the player to the referred position...
-                    p.teleport(new Location(w, x, y, z, (float)yaw, (float)pitch));
+                    p.teleport(new Location(w, x, y, z));
+                    
+                    
                     
                     // ...and welcome the player to spawn!
                     p.sendMessage(ChatColor.GREEN + plugin.getConfig().getString("spawn-message"));

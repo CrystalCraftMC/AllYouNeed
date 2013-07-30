@@ -45,6 +45,7 @@ public class AYNSetHome implements CommandExecutor{
 				HomeListConfig.getHomeList().set(sdername+".Y", Y);
 				HomeListConfig.getHomeList().set(sdername+".Z", Z);
 				HomeListConfig.savehomelist();
+				
 				sender.sendMessage(ChatColor.GREEN + "Home set!");
 				return true;
 			}

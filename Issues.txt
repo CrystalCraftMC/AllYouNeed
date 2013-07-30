@@ -1,0 +1,3 @@
+gohome changed to home;
+definehome changed to Sethome;
+home can't manage worlds...

@@ -7,17 +7,12 @@ import org.bukkit.entity.Player;
 
 import com.crystalcraftmc.allyouneed.Main;
 
-
-
-public class AYNHeal implements CommandExecutor{
+public class AYNHeal implements CommandExecutor {
 	Main plugin;
-	
-	public AYNHeal(Main m){
-		this.plugin = m;
+	public AYNHeal(Main main){
+		this.plugin = main;
 	}
-	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
-		
 		if(args.length < 1){
 			Player pl = (Player) sender;
 			pl.setHealth(20);
@@ -29,6 +24,7 @@ public class AYNHeal implements CommandExecutor{
 				Player pl = plugin.getServer().getPlayer(args[0]);
 				pl.setHealth(20);
 				pl.setFoodLevel(20);
+				pl.sendMessage("You got healed by "+sender.getName());
 				return true;
 			}
 			else{
@@ -36,6 +32,7 @@ public class AYNHeal implements CommandExecutor{
 				return false;
 			}
 		}
+		
 	}
 
 }
