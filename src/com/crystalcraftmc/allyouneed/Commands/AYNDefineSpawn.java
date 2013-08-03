@@ -16,51 +16,57 @@ public class AYNDefineSpawn implements CommandExecutor
 		this.plugin = plugin;
 	}
 	
-	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
+ @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+        if (!(sender instanceof Player)) {
+            System.out.println("The definespawn command must be run as a player");
+        } else {
+            Player p = (Player) sender;
+
+            if (args.length <= 1 && (!cmd.getName().equalsIgnoreCase("definespawn"))) {
+                Location Loc = p.getLocation();
+                World world = p.getWorld();
+
+
+                world.setSpawnLocation(Loc.getBlockX(), Loc.getBlockY(), Loc.getBlockZ());
+                plugin.getConfig().set("spawn." + world.getName() + ".yaw", (double) getDirection(Loc.getYaw()));
+                plugin.saveConfig();
+                plugin.reloadConfig();
+                world.save();
+                p.sendMessage(ChatColor.GREEN + "You have successfully set the spawn in " + world.getName());
+                return true;
+            } else {
+                p.sendMessage(ChatColor.DARK_RED + "You should not be providing any arguments");
+                return false;
+            }
+
+
+            p.sendMessage(ChatColor.DARK_RED + "There was a problem setting spawn");
+            plugin.getLogger().log(Level.SEVERE, "Unable to set the spawn point for " + world.getName());
+            
+
+
+        }
+
+        return true;
+    }
+
+	/**
+	 Works out the Yaw of the player location
+
+	 @param yaw float
+	 @return int
+	 */
+	public int getDirection(Float yaw)
 	{
-		// Make the letter 'p' a variable for the command sender (or the player).
-		Player p = (Player) sender;
-		
-	    {	
-	    	// If the player typed /definespawn, then do the following...
-	    	if (cmd.getName().equalsIgnoreCase("definespawn"))
-	    	{
-	    		// If the sender of the command is NOT a player...
-	    		if (!(sender instanceof Player))
-	    		{
-	    			// ...do not let the command be run.
-	    			sender.sendMessage("This command can only be run by a player.");
-	    		}
-	    		// Otherwise...
-	    		else
-	    		{
-	    			// ...record the world the player is in...
-	    			p.getLocation().getWorld().setSpawnLocation((int)p.getLocation().getX(), 
-	    					(int)p.getLocation().getY(),(int) p.getLocation().getZ());
-	    			plugin.getConfig().set("spawn.world", p.getLocation().getWorld().getName());
-	    			
-	    			// ...record the x-position the player is in...
-                    plugin.getConfig().set("spawn.x", p.getLocation().getX());
-                    
-                    // ...record the y-position the player is in...
-                    plugin.getConfig().set("spawn.y", p.getLocation().getY());
-                    
-                    // ...record the z-position the player is in...
-                    plugin.getConfig().set("spawn.z", p.getLocation().getZ());
-                    
-                    // ...save ALL of the above info to the config file...
-                    plugin.saveConfig();
-                    
-                    // ...and tell the player that spawn was set successfully!
-                    p.sendMessage(ChatColor.GREEN + "Spawn set!");
-	    		}
-	    		// If this has happened, the function will return true. 
-	    		return true;
-	    	}
-	    	
-	        // If this hasn't happened, a value of false will be returned.
-	    	return false;
-	    }
+		yaw = yaw / 90;
+		yaw = (float)Math.round(yaw);
+
+		if (yaw == -4 || yaw == 0 || yaw == 4) {return 0;}
+		if (yaw == -1 || yaw == 3) {return -90;}
+		if (yaw == -2 || yaw == 2) {return -179;}
+		if (yaw == -3 || yaw == 1) {return 90;}
+		return 5;
 	}
 }
