@@ -11,6 +11,7 @@ import com.crystalcraftmc.allyouneed.Commands.AYNHeal;
 import com.crystalcraftmc.allyouneed.Commands.AYNHome;
 import com.crystalcraftmc.allyouneed.Commands.AYNSetHome;
 import com.crystalcraftmc.allyouneed.Commands.AYNSpawn;
+import com.crystalcraftmc.allyouneed.Commands.AYNTpBack;
 import com.crystalcraftmc.allyouneed.Commands.AYNTpgo;
 
 public final class Main extends JavaPlugin
@@ -28,6 +29,12 @@ public final class Main extends JavaPlugin
 		HomeListConfig HLC = new HomeListConfig(this);
 		AYNSetHome.HomeListConfig = HLC;
 		AYNHome.HomeListConfig = HLC;
+		
+		TpBackListConfig TPLC = new TpBackListConfig(this);
+		AYNTpBack.TpListConfig = TPLC;
+		AYNTpgo.TpListConfig = TPLC;
+		AYNHome.TpListConfig = TPLC;
+		AYNSpawn.TpListConfig = TPLC;
 		
 		// Link plugin with online stats.
 		try {
@@ -73,6 +80,8 @@ public final class Main extends JavaPlugin
 		getCommand("home").setExecutor(new AYNHome(this));
 		
 		getCommand("heal").setExecutor(new AYNHeal(this));
+		
+		getCommand("tpback").setExecutor(new AYNTpBack(this));
 		
 
 	

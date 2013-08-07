@@ -8,9 +8,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.crystalcraftmc.allyouneed.Main;
+import com.crystalcraftmc.allyouneed.TpBackListConfig;
 
 public class AYNTpgo implements CommandExecutor
 {
+	public static TpBackListConfig TpListConfig = new TpBackListConfig();
+	
 	public AYNTpgo(Main main)
 	{
 		// TODO Auto-generated constructor stub
@@ -34,6 +37,16 @@ public class AYNTpgo implements CommandExecutor
     		// Otherwise...
     		else
     		{
+    			double X = p.getLocation().getX();
+    			double Y = p.getLocation().getY();
+    			double Z = p.getLocation().getZ();
+    			
+    			String pname = p.getName();
+    			TpListConfig.getTpList().set(pname + ".X", X);
+    			TpListConfig.getTpList().set(pname + ".Y", Y);
+    			TpListConfig.getTpList().set(pname + ".Z", Z);
+    			TpListConfig.savetplist();
+    			
     			// ...if /tpgo is typed without specifying what player...
     			if (args.length == 0)
     			{

@@ -11,10 +11,16 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import com.crystalcraftmc.allyouneed.Main;
+import com.crystalcraftmc.allyouneed.TpBackListConfig;
+
+
 
 public class AYNSpawn implements CommandExecutor
 {
+	public static TpBackListConfig TpListConfig = new TpBackListConfig();
+	
 	Main plugin;
+	
 	public AYNSpawn(Main plugin)
 	{
 		this.plugin = plugin;
@@ -39,6 +45,16 @@ public class AYNSpawn implements CommandExecutor
 	    		// Otherwise...
 	    		else
 	    		{
+	    			double X = p.getLocation().getX();
+	    			double Y = p.getLocation().getY();
+	    			double Z = p.getLocation().getZ();
+	    			
+	    			String pname = p.getName();
+	    			TpListConfig.getTpList().set(pname + ".X", X);
+	    			TpListConfig.getTpList().set(pname + ".Y", Y);
+	    			TpListConfig.getTpList().set(pname + ".Z", Z);
+	    			TpListConfig.savetplist();
+	    			
 	    			// ...if there is no definition for spawn...
                     if (plugin.getConfig().getConfigurationSection("spawn") == null)
                     {
