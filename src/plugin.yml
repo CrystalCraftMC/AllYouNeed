@@ -1,6 +1,10 @@
 name: All You Need
 main: com.crystalcraftmc.allyouneed.Main
+<<<<<<< HEAD
 version: 0.3b
+=======
+version: 1.0
+>>>>>>> ae05d78d638b069f8901a5a5454d1b7c161096b2
 
 commands:
   ct:
@@ -39,14 +43,14 @@ commands:
 permissions:
   ayn.*:
     children:
-      ayn.ct:true
-      ayn.ender:true
-      ayn.tpgo:true
-      ayn.definespawn:true
-      ayn.spawn:true
-      ayn.home:true
-      ayn.definehome:true
-      ayn.heal:true
+      ayn.ct: true
+      ayn.ender: true
+      ayn.tpgo: true
+      ayn.definespawn: true
+      ayn.spawn: true
+      ayn.home: true
+      ayn.definehome: true
+      ayn.heal: true
   ayn.ct:
     default: true
   ayn.ender:
