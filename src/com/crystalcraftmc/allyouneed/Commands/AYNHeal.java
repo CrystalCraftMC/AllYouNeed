@@ -1,5 +1,8 @@
 package com.crystalcraftmc.allyouneed.Commands;
 
+
+
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -9,6 +12,7 @@ import com.crystalcraftmc.allyouneed.Main;
 
 public class AYNHeal implements CommandExecutor {
 	Main plugin;
+	Player pl;
 	public AYNHeal(Main main){
 		this.plugin = main;
 	}
@@ -18,26 +22,21 @@ public class AYNHeal implements CommandExecutor {
         if (args.length < 1) {
             Player pl = (Player) sender;
             pl = doHeal(pl);
+            this.pl = pl;
             return true;
         } else {
             if (plugin.getServer().getPlayer(args[0]) != null) {
                 String tmp = ChatColor.translateAlternateColorCodes('&', args[0]);
                 if (tmp.length() > 16) {
-                    sender.sendMessage(ChatColor.RED + "Error: " + "" + ChatColor.AQUA + tmp + ChatColor.RED + " name has more than 16 characters or did not exist");)
+                    sender.sendMessage(ChatColor.RED + "Error: " + "" + ChatColor.AQUA + tmp + ChatColor.RED +
+                    		" name has more than 16 characters or did not exist");
+                    return true;
                 } else {
-                    try {
-                        Player pl = plugin.getServer().getPlayer(args[0]);
-                    } catch (Exception e) {
-                    	sender.sendMessage(ChatColor.RED + "Unknown error see logs");
-                        plugin.getLogger().log(Level.SEVERE, e.getStackTrace().toString());
-                        return false;
-                    }
-
                     pl = doHeal(pl);
                     pl.sendMessage(ChatColor.GREEN + "You got healed by " + sender.getName().toString());
                 }
                 return true;
-            }
+            }else return false;
 
         }
 

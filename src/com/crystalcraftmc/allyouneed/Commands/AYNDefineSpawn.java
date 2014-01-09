@@ -1,6 +1,10 @@
 package com.crystalcraftmc.allyouneed.Commands;
 
+
+
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,6 +15,7 @@ import com.crystalcraftmc.allyouneed.Main;
 public class AYNDefineSpawn implements CommandExecutor
 {
 	Main plugin;
+	World world;
 	public AYNDefineSpawn(Main plugin)
 	{
 		this.plugin = plugin;
@@ -27,6 +32,7 @@ public class AYNDefineSpawn implements CommandExecutor
             if (args.length <= 1 && (!cmd.getName().equalsIgnoreCase("definespawn"))) {
                 Location Loc = p.getLocation();
                 World world = p.getWorld();
+                this.world = world;
 
 
                 world.setSpawnLocation(Loc.getBlockX(), Loc.getBlockY(), Loc.getBlockZ());
@@ -40,11 +46,6 @@ public class AYNDefineSpawn implements CommandExecutor
                 p.sendMessage(ChatColor.DARK_RED + "You should not be providing any arguments");
                 return false;
             }
-
-
-            p.sendMessage(ChatColor.DARK_RED + "There was a problem setting spawn");
-            plugin.getLogger().log(Level.SEVERE, "Unable to set the spawn point for " + world.getName());
-            
 
 
         }

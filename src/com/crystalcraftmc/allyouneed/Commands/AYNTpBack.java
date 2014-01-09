@@ -35,9 +35,9 @@ public class AYNTpBack implements CommandExecutor
 			{
 				Player p = (Player) sender;
 				TpListConfig.reloadTpList();
-				double X = TpBackListConfig.getTpList().getDouble(p.getName()+".X");
-				double Y = TpBackListConfig.getTpList().getDouble(p.getName()+".Y");
-				double Z = TpBackListConfig.getTpList().getDouble(p.getName()+".Z");
+				double X = TpListConfig.getTpList().getDouble(p.getName()+".X");
+				double Y = TpListConfig.getTpList().getDouble(p.getName()+".Y");
+				double Z = TpListConfig.getTpList().getDouble(p.getName()+".Z");
 				World world = p.getLocation().getWorld();			
 				Location loc1 = new Location(world,X,Y,Z);
 				loc1.setWorld(world);
@@ -47,6 +47,6 @@ public class AYNTpBack implements CommandExecutor
 				p.teleport(loc1);
 				return true;
 			}
-		}
+		}else return false;
 	}
 }
