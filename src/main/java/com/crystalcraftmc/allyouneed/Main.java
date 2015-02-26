@@ -19,17 +19,11 @@ package com.crystalcraftmc.allyouneed;
 import com.crystalcraftmc.allyouneed.Commands.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.IOException;
-
 public final class Main extends JavaPlugin
 {
 	@Override
     public void onEnable()
 	{
-		
-		//
-		//
-		
         // TODO Insert logic to be performed when the plugin is enabled
 		getLogger().info("All You Need has been enabled!");
 		
@@ -42,14 +36,7 @@ public final class Main extends JavaPlugin
 		AYNTpgo.TpListConfig = TPLC;
 		AYNHome.TpListConfig = TPLC;
 		AYNSpawn.TpListConfig = TPLC;
-		
-		// Link plugin with online stats.
-		try {
-		    Metrics metrics = new Metrics(this);
-		    metrics.start();
-		} catch (IOException e){
-		    // Failed to submit the stats :-(
-		}
+
 		// Generate the config.yml file.
 		this.saveDefaultConfig();
 		
@@ -59,10 +46,8 @@ public final class Main extends JavaPlugin
 		// ...and save the configuration file.
         this.saveConfig();
         
-        // If auto-update is set to "true" in the configuration file...
-        if (this.getConfig().getBoolean("auto-update"));
+        if (this.getConfig().getBoolean("auto-update"))
         {
-        	// ...check for and download any new updates for the plugin.
         	@SuppressWarnings("unused")
 			Updater updater = new Updater(this, "all-you-need", this.getFile(), Updater.UpdateType.DEFAULT, true);
         }
