@@ -19,6 +19,8 @@ package com.crystalcraftmc.allyouneed;
 import com.crystalcraftmc.allyouneed.Commands.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.IOException;
+
 public final class Main extends JavaPlugin
 {
 	@Override
@@ -45,6 +47,13 @@ public final class Main extends JavaPlugin
 		
 		// ...and save the configuration file.
         this.saveConfig();
+
+        try {
+            MetricsLite metrics = new MetricsLite(this);
+            metrics.start();
+        } catch (IOException e) {
+            // Failed to submit the stats :-(
+        }
         
         if (this.getConfig().getBoolean("auto-update"))
         {
