@@ -1,6 +1,8 @@
-name: All You Need
+name: AllYouNeed
 main: com.crystalcraftmc.allyouneed.Main
-version: 1.1.1
+version: 1.1.1a
+authors: [jflory7]
+website: http://justinwflory.com
 
 commands:
   ct:
