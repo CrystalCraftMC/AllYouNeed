@@ -1,4 +1,4 @@
-All You Need
+All You Need [![Build Status](https://travis-ci.org/jflory7/All-You-Need.svg)](https://travis-ci.org/jflory7/All-You-Need)
 =============
 
 We are the 2013 Duke TiP students at the University of Georgia taking the
